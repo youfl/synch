@@ -52,7 +52,7 @@ class SqlConvert:
         parsed = mysqlparse.parse(query)
         statement = parsed.statements[0]  # type:ast.stmt
         statement_type = statement.statement_type
-        table_name = statement.table_name
+        table_name = statement.table_name.repalce("`", "")
         alter_specification = statement.alter_specification[0]
         alter_action = alter_specification.alter_action
         column_name = alter_specification.column_name
